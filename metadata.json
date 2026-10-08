@@ -1,0 +1,11 @@
+{
+  "name": "Remix Remix FLASH CAM",
+  "description": "AI-Powered Intelligent Video Surveillance, Verification, Investigation \u0026 Conversational Voice Agent Platform",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
