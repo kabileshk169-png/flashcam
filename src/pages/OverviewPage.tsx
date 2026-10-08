@@ -23,15 +23,18 @@ import { api } from '../services/api';
 import { Camera as CameraType, SecurityEvent, SecurityAlert } from '../types';
 import { CctvThumbnail } from '../components/camera/CctvThumbnails';
 import { MotionHeatmapOverlay } from '../components/camera/MotionHeatmapOverlay';
+import { LiveStreamPlayer } from '../components/camera/LiveStreamPlayer';
+import { INITIAL_CAMERAS, INITIAL_EVENTS, INITIAL_ALERTS } from '../data/initialData';
 
 export const OverviewPage: React.FC = () => {
   const { metrics, navigateTo, setSelectedCameraId, showToast, toggleFullscreen } = useApp();
 
-  const [cameras, setCameras] = useState<CameraType[]>([]);
-  const [recentEvents, setRecentEvents] = useState<SecurityEvent[]>([]);
-  const [activeAlerts, setActiveAlerts] = useState<SecurityAlert[]>([]);
+  const [cameras, setCameras] = useState<CameraType[]>(INITIAL_CAMERAS);
+  const [recentEvents, setRecentEvents] = useState<SecurityEvent[]>(INITIAL_EVENTS);
+  const [activeAlerts, setActiveAlerts] = useState<SecurityAlert[]>(INITIAL_ALERTS);
   const [isHeatmapActive, setIsHeatmapActive] = useState(false);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const [feedMode, setFeedMode] = useState<'live' | 'snapshot'>('live');
   const [currentTimeStr, setCurrentTimeStr] = useState('');
   const [currentDateStr, setCurrentDateStr] = useState('Oct 08, 2026');
 
@@ -67,9 +70,9 @@ export const OverviewPage: React.FC = () => {
           api.getEvents(),
           api.getAlerts(),
         ]);
-        setCameras(cams);
-        setRecentEvents(evts.slice(0, 6));
-        setActiveAlerts(alts.filter((a) => a.status === 'active').slice(0, 6));
+        if (cams && cams.length > 0) setCameras(cams);
+        if (evts && evts.length > 0) setRecentEvents(evts.slice(0, 6));
+        if (alts) setActiveAlerts(alts.filter((a) => a.status === 'active').slice(0, 6));
       } catch (err) {
         console.warn('Overview fetch error:', err);
       }
@@ -286,6 +289,29 @@ export const OverviewPage: React.FC = () => {
 
           {/* Grid Toolbar: View All, Grid/List toggle, Fullscreen, Heatmap toggle */}
           <div className="flex items-center gap-2.5">
+            {/* Feed Mode Toggle: Live Stream vs Snapshot */}
+            <button
+              onClick={() => {
+                const nextMode = feedMode === 'live' ? 'snapshot' : 'live';
+                setFeedMode(nextMode);
+                showToast(
+                  nextMode === 'live'
+                    ? '4-Node Live Streams Activated'
+                    : 'Static CCTV Snapshot Mode Activated',
+                  'info'
+                );
+              }}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all border cursor-pointer ${
+                feedMode === 'live'
+                  ? 'bg-blue-50 text-blue-600 border-blue-200 shadow-xs'
+                  : 'bg-white text-slate-600 border-[#DCE6F0] hover:bg-slate-50'
+              }`}
+              title="Toggle Live Video Stream vs Snapshot Mode"
+            >
+              <Video className={`w-3.5 h-3.5 ${feedMode === 'live' ? 'text-blue-600' : 'text-slate-400'}`} />
+              <span>{feedMode === 'live' ? 'Live Stream: ON' : 'Snapshots'}</span>
+            </button>
+
             {/* Heatmap overlay button */}
             <button
               onClick={() => {
@@ -361,7 +387,7 @@ export const OverviewPage: React.FC = () => {
               : 'grid-cols-1'
           }`}
         >
-          {cameras.slice(0, 4).map((cam) => {
+          {cameras.slice(0, 4).map((cam, idx) => {
             const isOnline = cam.status === 'online' && cam.enabled;
 
             return (
@@ -372,44 +398,56 @@ export const OverviewPage: React.FC = () => {
               >
                 {/* Viewport Thumbnail Area */}
                 <div className="relative aspect-video bg-[#0f172a] overflow-hidden">
-                  {/* High fidelity CCTV view */}
-                  <CctvThumbnail cameraId={cam.id} />
+                  {feedMode === 'live' ? (
+                    <LiveStreamPlayer
+                      camera={cam}
+                      staggerIndex={idx}
+                      isFocused={false}
+                      showOverlayDetections={true}
+                      showOverlayTracking={false}
+                    />
+                  ) : (
+                    <>
+                      {/* High fidelity CCTV view */}
+                      <CctvThumbnail cameraId={cam.id} thumbnailUrl={cam.thumbnailUrl} alt={cam.name} />
+
+                      {/* Top Bar Badges */}
+                      <div className="absolute top-2.5 left-2.5 flex items-center gap-1.5 z-20 pointer-events-none">
+                        {isOnline ? (
+                          <span className="flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-[#10B981] text-white text-[10px] font-bold tracking-wider shadow-xs">
+                            <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                            LIVE
+                          </span>
+                        ) : (
+                          <span className="flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-[#EF4444] text-white text-[10px] font-bold tracking-wider shadow-xs">
+                            <span className="w-1.5 h-1.5 rounded-full bg-white" />
+                            OFFLINE
+                          </span>
+                        )}
+                      </div>
+
+                      <div className="absolute top-2.5 right-2.5 flex items-center gap-1.5 z-20 pointer-events-none">
+                        <span className="px-1.5 py-0.5 rounded-md bg-black/60 backdrop-blur-xs text-white text-[10px] font-mono border border-white/10">
+                          {cam.resolution || '1920×1080'}
+                        </span>
+                        <span className="px-1.5 py-0.5 rounded-md bg-black/60 backdrop-blur-xs text-white text-[10px] font-mono border border-white/10">
+                          {cam.fps || 30} FPS
+                        </span>
+                      </div>
+
+                      {/* Bottom Black CCTV info strip (Exact match to reference) */}
+                      <div className="absolute bottom-0 inset-x-0 bg-black/80 backdrop-blur-xs px-3 py-1 text-[10px] font-mono text-slate-300 flex items-center justify-between z-20 border-t border-white/10 pointer-events-none">
+                        <span className="truncate">
+                          {cam.id.toUpperCase()} • {cam.location}
+                        </span>
+                      </div>
+                    </>
+                  )}
 
                   {/* Motion Heatmap Overlay if toggled */}
                   {isHeatmapActive && (
                     <MotionHeatmapOverlay cameraId={cam.id} showLabels={false} />
                   )}
-
-                  {/* Top Bar Badges */}
-                  <div className="absolute top-2.5 left-2.5 flex items-center gap-1.5 z-20">
-                    {isOnline ? (
-                      <span className="flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-[#10B981] text-white text-[10px] font-bold tracking-wider shadow-xs">
-                        <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                        LIVE
-                      </span>
-                    ) : (
-                      <span className="flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-[#EF4444] text-white text-[10px] font-bold tracking-wider shadow-xs">
-                        <span className="w-1.5 h-1.5 rounded-full bg-white" />
-                        OFFLINE
-                      </span>
-                    )}
-                  </div>
-
-                  <div className="absolute top-2.5 right-2.5 flex items-center gap-1.5 z-20">
-                    <span className="px-1.5 py-0.5 rounded-md bg-black/60 backdrop-blur-xs text-white text-[10px] font-mono border border-white/10">
-                      {cam.resolution || '1920×1080'}
-                    </span>
-                    <span className="px-1.5 py-0.5 rounded-md bg-black/60 backdrop-blur-xs text-white text-[10px] font-mono border border-white/10">
-                      {cam.fps || 30} FPS
-                    </span>
-                  </div>
-
-                  {/* Bottom Black CCTV info strip (Exact match to reference) */}
-                  <div className="absolute bottom-0 inset-x-0 bg-black/80 backdrop-blur-xs px-3 py-1 text-[10px] font-mono text-slate-300 flex items-center justify-between z-20 border-t border-white/10">
-                    <span className="truncate">
-                      {cam.id.toUpperCase()} • {cam.location}
-                    </span>
-                  </div>
                 </div>
 
                 {/* Card Bottom Meta */}
