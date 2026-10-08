@@ -239,8 +239,10 @@ export interface DatabaseSchema {
   tracks: LiveTrack[];
 }
 
-const DATA_DIR = path.resolve(process.cwd(), 'data');
-const DB_FILE = path.join(DATA_DIR, 'db.json');
+const isServerless = Boolean(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME);
+const DATA_DIR = isServerless ? '/tmp' : path.resolve(process.cwd(), 'data');
+const READ_DB_FILE = path.resolve(process.cwd(), 'data', 'db.json');
+const WRITE_DB_FILE = isServerless ? path.join('/tmp', 'db.json') : READ_DB_FILE;
 
 const DEFAULT_SETTINGS: UserSettings = {
   userName: 'Chief Security Officer',
@@ -914,8 +916,12 @@ class Database {
   }
 
   private ensureDir() {
-    if (!fs.existsSync(DATA_DIR)) {
-      fs.mkdirSync(DATA_DIR, { recursive: true });
+    try {
+      if (!fs.existsSync(DATA_DIR)) {
+        fs.mkdirSync(DATA_DIR, { recursive: true });
+      }
+    } catch {
+      // Safe fallback in read-only serverless environments
     }
   }
 
@@ -948,9 +954,15 @@ class Database {
 
   private loadData(): DatabaseSchema {
     this.ensureDir();
-    if (fs.existsSync(DB_FILE)) {
+    const candidateFile = fs.existsSync(WRITE_DB_FILE)
+      ? WRITE_DB_FILE
+      : fs.existsSync(READ_DB_FILE)
+      ? READ_DB_FILE
+      : null;
+
+    if (candidateFile) {
       try {
-        const raw = fs.readFileSync(DB_FILE, 'utf-8');
+        const raw = fs.readFileSync(candidateFile, 'utf-8');
         const parsed = JSON.parse(raw);
         return {
           cameras: (parsed.cameras && parsed.cameras.length > 0) ? parsed.cameras : INITIAL_CAMERAS,
@@ -1001,8 +1013,12 @@ class Database {
   }
 
   private persist(data: DatabaseSchema) {
-    this.ensureDir();
-    fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 2), 'utf-8');
+    try {
+      this.ensureDir();
+      fs.writeFileSync(WRITE_DB_FILE, JSON.stringify(data, null, 2), 'utf-8');
+    } catch (err) {
+      console.warn('[FLASH CAM DB] Storage write warning (in-memory state preserved):', err);
+    }
   }
 
   public get(): DatabaseSchema {

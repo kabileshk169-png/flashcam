@@ -32,21 +32,20 @@ import {
 export const apiRouter = express.Router();
 
 // Ensure upload, clips, snapshots, and recordings directories exist
-const UPLOADS_DIR = path.resolve(process.cwd(), 'uploads');
-if (!fs.existsSync(UPLOADS_DIR)) {
-  fs.mkdirSync(UPLOADS_DIR, { recursive: true });
-}
+const isServerless = Boolean(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME);
+const UPLOADS_DIR = isServerless ? path.join('/tmp', 'uploads') : path.resolve(process.cwd(), 'uploads');
 const CLIPS_DIR = path.join(UPLOADS_DIR, 'clips');
-if (!fs.existsSync(CLIPS_DIR)) {
-  fs.mkdirSync(CLIPS_DIR, { recursive: true });
-}
 const SNAPSHOTS_DIR = path.join(UPLOADS_DIR, 'snapshots');
-if (!fs.existsSync(SNAPSHOTS_DIR)) {
-  fs.mkdirSync(SNAPSHOTS_DIR, { recursive: true });
-}
 const RECORDINGS_DIR = path.join(UPLOADS_DIR, 'recordings');
-if (!fs.existsSync(RECORDINGS_DIR)) {
-  fs.mkdirSync(RECORDINGS_DIR, { recursive: true });
+
+for (const dir of [UPLOADS_DIR, CLIPS_DIR, SNAPSHOTS_DIR, RECORDINGS_DIR]) {
+  try {
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+  } catch (err) {
+    // Ignore read-only filesystem errors in serverless
+  }
 }
 
 // TCP Probe helper for testing real RTSP/IP cameras
