@@ -2140,18 +2140,6 @@
   ],
   "alerts": [
     {
-      "id": "alt-1791485925887-jrfs6",
-      "ruleId": "rule-01",
-      "ruleName": "Red Bag / Unattended Package Alert",
-      "eventId": "ev-1791485925864-5nkhl",
-      "cameraId": "cam-01",
-      "cameraName": "Sturgis Motorcycle Rally Cam",
-      "severity": "critical",
-      "message": "Security Rule Triggered: \"Red Bag / Unattended Package Alert\" - Red Bag / Monitored Backpack detected at 00:28:45",
-      "status": "active",
-      "createdAt": "2026-10-08T18:58:45.887Z"
-    },
-    {
       "id": "alt-1791485925848-x1wln",
       "ruleId": "rule-02",
       "ruleName": "Perimeter Unauthorized Person Detection",
@@ -2162,18 +2150,6 @@
       "message": "Security Rule Triggered: \"Perimeter Unauthorized Person Detection\" - Security Patrol Personnel detected at 00:28:45",
       "status": "active",
       "createdAt": "2026-10-08T18:58:45.848Z"
-    },
-    {
-      "id": "alt-1791484503042-sls8e",
-      "ruleId": "rule-01",
-      "ruleName": "Red Bag / Unattended Package Alert",
-      "eventId": "ev-1791484503026-b15sz",
-      "cameraId": "cam-01",
-      "cameraName": "Sturgis Motorcycle Rally Cam",
-      "severity": "critical",
-      "message": "Security Rule Triggered: \"Red Bag / Unattended Package Alert\" - Red Bag / Monitored Backpack detected at 00:05:02",
-      "status": "active",
-      "createdAt": "2026-10-08T18:35:03.042Z"
     },
     {
       "id": "alt-1791484503000-erz4a",
@@ -2188,18 +2164,6 @@
       "createdAt": "2026-10-08T18:35:03.000Z"
     },
     {
-      "id": "alt-1791484497851-3g0a4",
-      "ruleId": "rule-01",
-      "ruleName": "Red Bag / Unattended Package Alert",
-      "eventId": "ev-1791484497837-h7leg",
-      "cameraId": "cam-01",
-      "cameraName": "Sturgis Motorcycle Rally Cam",
-      "severity": "critical",
-      "message": "Security Rule Triggered: \"Red Bag / Unattended Package Alert\" - Red Bag / Monitored Backpack detected at 00:04:57",
-      "status": "active",
-      "createdAt": "2026-10-08T18:34:57.851Z"
-    },
-    {
       "id": "alt-1791484497821-qgduc",
       "ruleId": "rule-02",
       "ruleName": "Perimeter Unauthorized Person Detection",
@@ -2210,18 +2174,6 @@
       "message": "Security Rule Triggered: \"Perimeter Unauthorized Person Detection\" - Security Patrol Personnel detected at 00:04:57",
       "status": "active",
       "createdAt": "2026-10-08T18:34:57.821Z"
-    },
-    {
-      "id": "alt-1791484487387-8tcjo",
-      "ruleId": "rule-01",
-      "ruleName": "Red Bag / Unattended Package Alert",
-      "eventId": "ev-1791484487369-y2o3v",
-      "cameraId": "cam-01",
-      "cameraName": "Sturgis Motorcycle Rally Cam",
-      "severity": "critical",
-      "message": "Security Rule Triggered: \"Red Bag / Unattended Package Alert\" - Red Bag / Monitored Backpack detected at 00:04:47",
-      "status": "active",
-      "createdAt": "2026-10-08T18:34:47.387Z"
     },
     {
       "id": "alt-1791484487348-4v22t",
@@ -2236,18 +2188,6 @@
       "createdAt": "2026-10-08T18:34:47.348Z"
     },
     {
-      "id": "alt-1791484484080-uqg32",
-      "ruleId": "rule-01",
-      "ruleName": "Red Bag / Unattended Package Alert",
-      "eventId": "ev-1791484484062-9rn3y",
-      "cameraId": "cam-01",
-      "cameraName": "Sturgis Motorcycle Rally Cam",
-      "severity": "critical",
-      "message": "Security Rule Triggered: \"Red Bag / Unattended Package Alert\" - Red Bag / Monitored Backpack detected at 00:04:44",
-      "status": "active",
-      "createdAt": "2026-10-08T18:34:44.080Z"
-    },
-    {
       "id": "alt-1791484484040-pu4ps",
       "ruleId": "rule-02",
       "ruleName": "Perimeter Unauthorized Person Detection",
@@ -2258,18 +2198,6 @@
       "message": "Security Rule Triggered: \"Perimeter Unauthorized Person Detection\" - Security Patrol Personnel detected at 00:04:44",
       "status": "active",
       "createdAt": "2026-10-08T18:34:44.040Z"
-    },
-    {
-      "id": "alt-1791484480734-rj23n",
-      "ruleId": "rule-01",
-      "ruleName": "Red Bag / Unattended Package Alert",
-      "eventId": "ev-1791484480715-dpjsk",
-      "cameraId": "cam-01",
-      "cameraName": "Sturgis Motorcycle Rally Cam",
-      "severity": "critical",
-      "message": "Security Rule Triggered: \"Red Bag / Unattended Package Alert\" - Red Bag / Monitored Backpack detected at 00:04:40",
-      "status": "active",
-      "createdAt": "2026-10-08T18:34:40.734Z"
     },
     {
       "id": "alt-1791484480697-g8si2",
@@ -2284,18 +2212,6 @@
       "createdAt": "2026-10-08T18:34:40.697Z"
     },
     {
-      "id": "alt-1791484477368-0avav",
-      "ruleId": "rule-01",
-      "ruleName": "Red Bag / Unattended Package Alert",
-      "eventId": "ev-1791484477353-h9er6",
-      "cameraId": "cam-01",
-      "cameraName": "Sturgis Motorcycle Rally Cam",
-      "severity": "critical",
-      "message": "Security Rule Triggered: \"Red Bag / Unattended Package Alert\" - Red Bag / Monitored Backpack detected at 00:04:37",
-      "status": "active",
-      "createdAt": "2026-10-08T18:34:37.368Z"
-    },
-    {
       "id": "alt-1791484477334-98j3k",
       "ruleId": "rule-02",
       "ruleName": "Perimeter Unauthorized Person Detection",
@@ -2306,18 +2222,6 @@
       "message": "Security Rule Triggered: \"Perimeter Unauthorized Person Detection\" - Security Patrol Personnel detected at 00:04:37",
       "status": "active",
       "createdAt": "2026-10-08T18:34:37.334Z"
-    },
-    {
-      "id": "alt-1791483769667-pmasg",
-      "ruleId": "rule-01",
-      "ruleName": "Red Bag / Unattended Package Alert",
-      "eventId": "ev-1791483769641-xwuo5",
-      "cameraId": "cam-01",
-      "cameraName": "Sturgis Motorcycle Rally Cam",
-      "severity": "critical",
-      "message": "Security Rule Triggered: \"Red Bag / Unattended Package Alert\" - Red Bag / Monitored Backpack detected at 23:52:49",
-      "status": "active",
-      "createdAt": "2026-10-08T18:22:49.667Z"
     },
     {
       "id": "alt-1791483769615-s2uvi",
@@ -2332,18 +2236,6 @@
       "createdAt": "2026-10-08T18:22:49.615Z"
     },
     {
-      "id": "alt-1791483760190-i37lh",
-      "ruleId": "rule-01",
-      "ruleName": "Red Bag / Unattended Package Alert",
-      "eventId": "ev-1791483760177-jrdq9",
-      "cameraId": "cam-01",
-      "cameraName": "Sturgis Motorcycle Rally Cam",
-      "severity": "critical",
-      "message": "Security Rule Triggered: \"Red Bag / Unattended Package Alert\" - Red Bag / Monitored Backpack detected at 23:52:40",
-      "status": "active",
-      "createdAt": "2026-10-08T18:22:40.190Z"
-    },
-    {
       "id": "alt-1791483760162-hvf0h",
       "ruleId": "rule-02",
       "ruleName": "Perimeter Unauthorized Person Detection",
@@ -2354,18 +2246,6 @@
       "message": "Security Rule Triggered: \"Perimeter Unauthorized Person Detection\" - Security Patrol Personnel detected at 23:52:40",
       "status": "active",
       "createdAt": "2026-10-08T18:22:40.162Z"
-    },
-    {
-      "id": "alt-1791483756817-zs5ia",
-      "ruleId": "rule-01",
-      "ruleName": "Red Bag / Unattended Package Alert",
-      "eventId": "ev-1791483756800-f4v4i",
-      "cameraId": "cam-01",
-      "cameraName": "Sturgis Motorcycle Rally Cam",
-      "severity": "critical",
-      "message": "Security Rule Triggered: \"Red Bag / Unattended Package Alert\" - Red Bag / Monitored Backpack detected at 23:52:36",
-      "status": "active",
-      "createdAt": "2026-10-08T18:22:36.817Z"
     },
     {
       "id": "alt-1791483756775-9ixie",
@@ -2380,18 +2260,6 @@
       "createdAt": "2026-10-08T18:22:36.775Z"
     },
     {
-      "id": "alt-1791479586874-z4cb3",
-      "ruleId": "rule-01",
-      "ruleName": "Red Bag / Unattended Package Alert",
-      "eventId": "ev-1791479586867-8ze38",
-      "cameraId": "cam-01",
-      "cameraName": "Main Gate (Cam 01)",
-      "severity": "critical",
-      "message": "Security Rule Triggered: \"Red Bag / Unattended Package Alert\" - Red Bag / Monitored Backpack detected at 22:43:06",
-      "status": "active",
-      "createdAt": "2026-10-08T17:13:06.874Z"
-    },
-    {
       "id": "alt-1791479586860-p4143",
       "ruleId": "rule-02",
       "ruleName": "Perimeter Unauthorized Person Detection",
@@ -2402,18 +2270,6 @@
       "message": "Security Rule Triggered: \"Perimeter Unauthorized Person Detection\" - Security Patrol Personnel detected at 22:43:06",
       "status": "active",
       "createdAt": "2026-10-08T17:13:06.860Z"
-    },
-    {
-      "id": "alt-1791479583693-4rc43",
-      "ruleId": "rule-01",
-      "ruleName": "Red Bag / Unattended Package Alert",
-      "eventId": "ev-1791479583687-rm8dg",
-      "cameraId": "cam-01",
-      "cameraName": "Main Gate (Cam 01)",
-      "severity": "critical",
-      "message": "Security Rule Triggered: \"Red Bag / Unattended Package Alert\" - Red Bag / Monitored Backpack detected at 22:43:03",
-      "status": "active",
-      "createdAt": "2026-10-08T17:13:03.693Z"
     },
     {
       "id": "alt-1791479583681-np8nr",
@@ -2428,18 +2284,6 @@
       "createdAt": "2026-10-08T17:13:03.681Z"
     },
     {
-      "id": "alt-1791479580472-q2w57",
-      "ruleId": "rule-01",
-      "ruleName": "Red Bag / Unattended Package Alert",
-      "eventId": "ev-1791479580465-b6u8i",
-      "cameraId": "cam-01",
-      "cameraName": "Main Gate (Cam 01)",
-      "severity": "critical",
-      "message": "Security Rule Triggered: \"Red Bag / Unattended Package Alert\" - Red Bag / Monitored Backpack detected at 22:43:00",
-      "status": "active",
-      "createdAt": "2026-10-08T17:13:00.472Z"
-    },
-    {
       "id": "alt-1791479580459-47n0h",
       "ruleId": "rule-02",
       "ruleName": "Perimeter Unauthorized Person Detection",
@@ -2450,18 +2294,6 @@
       "message": "Security Rule Triggered: \"Perimeter Unauthorized Person Detection\" - Security Patrol Personnel detected at 22:43:00",
       "status": "active",
       "createdAt": "2026-10-08T17:13:00.459Z"
-    },
-    {
-      "id": "alt-1791479577282-meo4m",
-      "ruleId": "rule-01",
-      "ruleName": "Red Bag / Unattended Package Alert",
-      "eventId": "ev-1791479577275-79667",
-      "cameraId": "cam-01",
-      "cameraName": "Main Gate (Cam 01)",
-      "severity": "critical",
-      "message": "Security Rule Triggered: \"Red Bag / Unattended Package Alert\" - Red Bag / Monitored Backpack detected at 22:42:57",
-      "status": "active",
-      "createdAt": "2026-10-08T17:12:57.282Z"
     },
     {
       "id": "alt-1791479577269-stp4p",
@@ -2476,18 +2308,6 @@
       "createdAt": "2026-10-08T17:12:57.269Z"
     },
     {
-      "id": "alt-1791479573161-18wv5",
-      "ruleId": "rule-01",
-      "ruleName": "Red Bag / Unattended Package Alert",
-      "eventId": "ev-1791479573154-27lwi",
-      "cameraId": "cam-01",
-      "cameraName": "Main Gate (Cam 01)",
-      "severity": "critical",
-      "message": "Security Rule Triggered: \"Red Bag / Unattended Package Alert\" - Red Bag / Monitored Backpack detected at 22:42:53",
-      "status": "active",
-      "createdAt": "2026-10-08T17:12:53.161Z"
-    },
-    {
       "id": "alt-1791479573145-tx1tw",
       "ruleId": "rule-02",
       "ruleName": "Perimeter Unauthorized Person Detection",
@@ -2498,18 +2318,6 @@
       "message": "Security Rule Triggered: \"Perimeter Unauthorized Person Detection\" - Security Patrol Personnel detected at 22:42:53",
       "status": "active",
       "createdAt": "2026-10-08T17:12:53.145Z"
-    },
-    {
-      "id": "alt-1791479569458-77oa1",
-      "ruleId": "rule-01",
-      "ruleName": "Red Bag / Unattended Package Alert",
-      "eventId": "ev-1791479569452-7ynn4",
-      "cameraId": "cam-01",
-      "cameraName": "Main Gate (Cam 01)",
-      "severity": "critical",
-      "message": "Security Rule Triggered: \"Red Bag / Unattended Package Alert\" - Red Bag / Monitored Backpack detected at 22:42:49",
-      "status": "active",
-      "createdAt": "2026-10-08T17:12:49.458Z"
     },
     {
       "id": "alt-1791479569446-ukhf8",
@@ -2524,18 +2332,6 @@
       "createdAt": "2026-10-08T17:12:49.446Z"
     },
     {
-      "id": "alt-1791479566291-n9vg1",
-      "ruleId": "rule-01",
-      "ruleName": "Red Bag / Unattended Package Alert",
-      "eventId": "ev-1791479566285-reht9",
-      "cameraId": "cam-01",
-      "cameraName": "Main Gate (Cam 01)",
-      "severity": "critical",
-      "message": "Security Rule Triggered: \"Red Bag / Unattended Package Alert\" - Red Bag / Monitored Backpack detected at 22:42:46",
-      "status": "active",
-      "createdAt": "2026-10-08T17:12:46.291Z"
-    },
-    {
       "id": "alt-1791479566277-ikrlb",
       "ruleId": "rule-02",
       "ruleName": "Perimeter Unauthorized Person Detection",
@@ -2546,18 +2342,6 @@
       "message": "Security Rule Triggered: \"Perimeter Unauthorized Person Detection\" - Security Patrol Personnel detected at 22:42:46",
       "status": "active",
       "createdAt": "2026-10-08T17:12:46.277Z"
-    },
-    {
-      "id": "alt-1791479562162-bfeul",
-      "ruleId": "rule-01",
-      "ruleName": "Red Bag / Unattended Package Alert",
-      "eventId": "ev-1791479562157-gfyph",
-      "cameraId": "cam-01",
-      "cameraName": "Main Gate (Cam 01)",
-      "severity": "critical",
-      "message": "Security Rule Triggered: \"Red Bag / Unattended Package Alert\" - Red Bag / Monitored Backpack detected at 22:42:42",
-      "status": "active",
-      "createdAt": "2026-10-08T17:12:42.162Z"
     },
     {
       "id": "alt-1791479562151-pd453",
@@ -2572,18 +2356,6 @@
       "createdAt": "2026-10-08T17:12:42.151Z"
     },
     {
-      "id": "alt-1791479558958-i6si4",
-      "ruleId": "rule-01",
-      "ruleName": "Red Bag / Unattended Package Alert",
-      "eventId": "ev-1791479558952-ocqn9",
-      "cameraId": "cam-01",
-      "cameraName": "Main Gate (Cam 01)",
-      "severity": "critical",
-      "message": "Security Rule Triggered: \"Red Bag / Unattended Package Alert\" - Red Bag / Monitored Backpack detected at 22:42:38",
-      "status": "active",
-      "createdAt": "2026-10-08T17:12:38.958Z"
-    },
-    {
       "id": "alt-1791479558945-zwbyt",
       "ruleId": "rule-02",
       "ruleName": "Perimeter Unauthorized Person Detection",
@@ -2594,18 +2366,6 @@
       "message": "Security Rule Triggered: \"Perimeter Unauthorized Person Detection\" - Security Patrol Personnel detected at 22:42:38",
       "status": "active",
       "createdAt": "2026-10-08T17:12:38.945Z"
-    },
-    {
-      "id": "alt-1791479555811-bjrl3",
-      "ruleId": "rule-01",
-      "ruleName": "Red Bag / Unattended Package Alert",
-      "eventId": "ev-1791479555805-oe5pe",
-      "cameraId": "cam-01",
-      "cameraName": "Main Gate (Cam 01)",
-      "severity": "critical",
-      "message": "Security Rule Triggered: \"Red Bag / Unattended Package Alert\" - Red Bag / Monitored Backpack detected at 22:42:35",
-      "status": "active",
-      "createdAt": "2026-10-08T17:12:35.811Z"
     },
     {
       "id": "alt-1791479555798-23ykw",
@@ -2620,18 +2380,6 @@
       "createdAt": "2026-10-08T17:12:35.798Z"
     },
     {
-      "id": "alt-1791479552661-eii5v",
-      "ruleId": "rule-01",
-      "ruleName": "Red Bag / Unattended Package Alert",
-      "eventId": "ev-1791479552656-qri6n",
-      "cameraId": "cam-01",
-      "cameraName": "Main Gate (Cam 01)",
-      "severity": "critical",
-      "message": "Security Rule Triggered: \"Red Bag / Unattended Package Alert\" - Red Bag / Monitored Backpack detected at 22:42:32",
-      "status": "active",
-      "createdAt": "2026-10-08T17:12:32.661Z"
-    },
-    {
       "id": "alt-1791479552650-lr6h4",
       "ruleId": "rule-02",
       "ruleName": "Perimeter Unauthorized Person Detection",
@@ -2642,18 +2390,6 @@
       "message": "Security Rule Triggered: \"Perimeter Unauthorized Person Detection\" - Security Patrol Personnel detected at 22:42:32",
       "status": "active",
       "createdAt": "2026-10-08T17:12:32.650Z"
-    },
-    {
-      "id": "alt-1791479542628-et27y",
-      "ruleId": "rule-01",
-      "ruleName": "Red Bag / Unattended Package Alert",
-      "eventId": "ev-1791479542620-n2vll",
-      "cameraId": "cam-01",
-      "cameraName": "Main Gate (Cam 01)",
-      "severity": "critical",
-      "message": "Security Rule Triggered: \"Red Bag / Unattended Package Alert\" - Red Bag / Monitored Backpack detected at 22:42:22",
-      "status": "active",
-      "createdAt": "2026-10-08T17:12:22.628Z"
     },
     {
       "id": "alt-1791479542612-syn31",
@@ -2668,18 +2404,6 @@
       "createdAt": "2026-10-08T17:12:22.612Z"
     },
     {
-      "id": "alt-1791479539446-xerww",
-      "ruleId": "rule-01",
-      "ruleName": "Red Bag / Unattended Package Alert",
-      "eventId": "ev-1791479539440-2y4ur",
-      "cameraId": "cam-01",
-      "cameraName": "Main Gate (Cam 01)",
-      "severity": "critical",
-      "message": "Security Rule Triggered: \"Red Bag / Unattended Package Alert\" - Red Bag / Monitored Backpack detected at 22:42:19",
-      "status": "active",
-      "createdAt": "2026-10-08T17:12:19.446Z"
-    },
-    {
       "id": "alt-1791479539428-6jup1",
       "ruleId": "rule-02",
       "ruleName": "Perimeter Unauthorized Person Detection",
@@ -2690,18 +2414,6 @@
       "message": "Security Rule Triggered: \"Perimeter Unauthorized Person Detection\" - Security Patrol Personnel detected at 22:42:19",
       "status": "active",
       "createdAt": "2026-10-08T17:12:19.428Z"
-    },
-    {
-      "id": "alt-1791479503373-hapja",
-      "ruleId": "rule-01",
-      "ruleName": "Red Bag / Unattended Package Alert",
-      "eventId": "ev-1791479503368-t0to4",
-      "cameraId": "cam-01",
-      "cameraName": "Main Gate (Cam 01)",
-      "severity": "critical",
-      "message": "Security Rule Triggered: \"Red Bag / Unattended Package Alert\" - Red Bag / Monitored Backpack detected at 22:41:43",
-      "status": "active",
-      "createdAt": "2026-10-08T17:11:43.373Z"
     },
     {
       "id": "alt-1791479503362-grspc",
@@ -2716,18 +2428,6 @@
       "createdAt": "2026-10-08T17:11:43.362Z"
     },
     {
-      "id": "alt-1791479500170-m1qif",
-      "ruleId": "rule-01",
-      "ruleName": "Red Bag / Unattended Package Alert",
-      "eventId": "ev-1791479500164-u5t83",
-      "cameraId": "cam-01",
-      "cameraName": "Main Gate (Cam 01)",
-      "severity": "critical",
-      "message": "Security Rule Triggered: \"Red Bag / Unattended Package Alert\" - Red Bag / Monitored Backpack detected at 22:41:40",
-      "status": "active",
-      "createdAt": "2026-10-08T17:11:40.170Z"
-    },
-    {
       "id": "alt-1791479500159-81ibh",
       "ruleId": "rule-02",
       "ruleName": "Perimeter Unauthorized Person Detection",
@@ -2738,18 +2438,6 @@
       "message": "Security Rule Triggered: \"Perimeter Unauthorized Person Detection\" - Security Patrol Personnel detected at 22:41:40",
       "status": "active",
       "createdAt": "2026-10-08T17:11:40.159Z"
-    },
-    {
-      "id": "alt-1791479496971-mzfde",
-      "ruleId": "rule-01",
-      "ruleName": "Red Bag / Unattended Package Alert",
-      "eventId": "ev-1791479496955-5owt2",
-      "cameraId": "cam-01",
-      "cameraName": "Main Gate (Cam 01)",
-      "severity": "critical",
-      "message": "Security Rule Triggered: \"Red Bag / Unattended Package Alert\" - Red Bag / Monitored Backpack detected at 22:41:36",
-      "status": "active",
-      "createdAt": "2026-10-08T17:11:36.971Z"
     },
     {
       "id": "alt-1791479496945-sb6ls",
@@ -2764,18 +2452,6 @@
       "createdAt": "2026-10-08T17:11:36.945Z"
     },
     {
-      "id": "alt-1791479493743-axn0i",
-      "ruleId": "rule-01",
-      "ruleName": "Red Bag / Unattended Package Alert",
-      "eventId": "ev-1791479493738-p94hw",
-      "cameraId": "cam-01",
-      "cameraName": "Main Gate (Cam 01)",
-      "severity": "critical",
-      "message": "Security Rule Triggered: \"Red Bag / Unattended Package Alert\" - Red Bag / Monitored Backpack detected at 22:41:33",
-      "status": "active",
-      "createdAt": "2026-10-08T17:11:33.743Z"
-    },
-    {
       "id": "alt-1791479493728-x67tw",
       "ruleId": "rule-02",
       "ruleName": "Perimeter Unauthorized Person Detection",
@@ -2786,18 +2462,6 @@
       "message": "Security Rule Triggered: \"Perimeter Unauthorized Person Detection\" - Security Patrol Personnel detected at 22:41:33",
       "status": "active",
       "createdAt": "2026-10-08T17:11:33.728Z"
-    },
-    {
-      "id": "alt-1791479490514-e9b3b",
-      "ruleId": "rule-01",
-      "ruleName": "Red Bag / Unattended Package Alert",
-      "eventId": "ev-1791479490508-xpgx3",
-      "cameraId": "cam-01",
-      "cameraName": "Main Gate (Cam 01)",
-      "severity": "critical",
-      "message": "Security Rule Triggered: \"Red Bag / Unattended Package Alert\" - Red Bag / Monitored Backpack detected at 22:41:30",
-      "status": "active",
-      "createdAt": "2026-10-08T17:11:30.514Z"
     },
     {
       "id": "alt-1791479490502-251m5",
@@ -2812,18 +2476,6 @@
       "createdAt": "2026-10-08T17:11:30.502Z"
     },
     {
-      "id": "alt-1791479487324-50hgv",
-      "ruleId": "rule-01",
-      "ruleName": "Red Bag / Unattended Package Alert",
-      "eventId": "ev-1791479487311-iihm9",
-      "cameraId": "cam-01",
-      "cameraName": "Main Gate (Cam 01)",
-      "severity": "critical",
-      "message": "Security Rule Triggered: \"Red Bag / Unattended Package Alert\" - Red Bag / Monitored Backpack detected at 22:41:27",
-      "status": "active",
-      "createdAt": "2026-10-08T17:11:27.324Z"
-    },
-    {
       "id": "alt-1791479487298-5lm7n",
       "ruleId": "rule-02",
       "ruleName": "Perimeter Unauthorized Person Detection",
@@ -2834,18 +2486,6 @@
       "message": "Security Rule Triggered: \"Perimeter Unauthorized Person Detection\" - Security Patrol Personnel detected at 22:41:27",
       "status": "active",
       "createdAt": "2026-10-08T17:11:27.298Z"
-    },
-    {
-      "id": "alt-1791479484123-of4ac",
-      "ruleId": "rule-01",
-      "ruleName": "Red Bag / Unattended Package Alert",
-      "eventId": "ev-1791479484118-uqr8w",
-      "cameraId": "cam-01",
-      "cameraName": "Main Gate (Cam 01)",
-      "severity": "critical",
-      "message": "Security Rule Triggered: \"Red Bag / Unattended Package Alert\" - Red Bag / Monitored Backpack detected at 22:41:24",
-      "status": "active",
-      "createdAt": "2026-10-08T17:11:24.123Z"
     },
     {
       "id": "alt-1791479484106-k81sh",
@@ -2860,18 +2500,6 @@
       "createdAt": "2026-10-08T17:11:24.106Z"
     },
     {
-      "id": "alt-1791479480929-s3ykc",
-      "ruleId": "rule-01",
-      "ruleName": "Red Bag / Unattended Package Alert",
-      "eventId": "ev-1791479480923-6hw40",
-      "cameraId": "cam-01",
-      "cameraName": "Main Gate (Cam 01)",
-      "severity": "critical",
-      "message": "Security Rule Triggered: \"Red Bag / Unattended Package Alert\" - Red Bag / Monitored Backpack detected at 22:41:20",
-      "status": "active",
-      "createdAt": "2026-10-08T17:11:20.929Z"
-    },
-    {
       "id": "alt-1791479480917-tlpy7",
       "ruleId": "rule-02",
       "ruleName": "Perimeter Unauthorized Person Detection",
@@ -2882,18 +2510,6 @@
       "message": "Security Rule Triggered: \"Perimeter Unauthorized Person Detection\" - Security Patrol Personnel detected at 22:41:20",
       "status": "active",
       "createdAt": "2026-10-08T17:11:20.917Z"
-    },
-    {
-      "id": "alt-1791479477712-jdlhp",
-      "ruleId": "rule-01",
-      "ruleName": "Red Bag / Unattended Package Alert",
-      "eventId": "ev-1791479477706-glutq",
-      "cameraId": "cam-01",
-      "cameraName": "Main Gate (Cam 01)",
-      "severity": "critical",
-      "message": "Security Rule Triggered: \"Red Bag / Unattended Package Alert\" - Red Bag / Monitored Backpack detected at 22:41:17",
-      "status": "active",
-      "createdAt": "2026-10-08T17:11:17.712Z"
     },
     {
       "id": "alt-1791479477697-mv2e3",
@@ -2908,18 +2524,6 @@
       "createdAt": "2026-10-08T17:11:17.697Z"
     },
     {
-      "id": "alt-1791479474496-wn58h",
-      "ruleId": "rule-01",
-      "ruleName": "Red Bag / Unattended Package Alert",
-      "eventId": "ev-1791479474491-9zw94",
-      "cameraId": "cam-01",
-      "cameraName": "Main Gate (Cam 01)",
-      "severity": "critical",
-      "message": "Security Rule Triggered: \"Red Bag / Unattended Package Alert\" - Red Bag / Monitored Backpack detected at 22:41:14",
-      "status": "active",
-      "createdAt": "2026-10-08T17:11:14.496Z"
-    },
-    {
       "id": "alt-1791479474486-dinhd",
       "ruleId": "rule-02",
       "ruleName": "Perimeter Unauthorized Person Detection",
@@ -2930,18 +2534,6 @@
       "message": "Security Rule Triggered: \"Perimeter Unauthorized Person Detection\" - Security Patrol Personnel detected at 22:41:14",
       "status": "active",
       "createdAt": "2026-10-08T17:11:14.486Z"
-    },
-    {
-      "id": "alt-1791479460493-ki40h",
-      "ruleId": "rule-01",
-      "ruleName": "Red Bag / Unattended Package Alert",
-      "eventId": "ev-1791479460489-kkhff",
-      "cameraId": "cam-01",
-      "cameraName": "Main Gate (Cam 01)",
-      "severity": "critical",
-      "message": "Security Rule Triggered: \"Red Bag / Unattended Package Alert\" - Red Bag / Monitored Backpack detected at 22:41:00",
-      "status": "active",
-      "createdAt": "2026-10-08T17:11:00.493Z"
     },
     {
       "id": "alt-1791479460483-e4438",
@@ -2956,18 +2548,6 @@
       "createdAt": "2026-10-08T17:11:00.483Z"
     },
     {
-      "id": "alt-1791477895344-36dl0",
-      "ruleId": "rule-01",
-      "ruleName": "Red Bag / Unattended Package Alert",
-      "eventId": "ev-1791477895335-6aye6",
-      "cameraId": "cam-01",
-      "cameraName": "Main Gate (Cam 01)",
-      "severity": "critical",
-      "message": "Security Rule Triggered: \"Red Bag / Unattended Package Alert\" - Red Bag / Monitored Backpack detected at 22:14:55",
-      "status": "active",
-      "createdAt": "2026-10-08T16:44:55.344Z"
-    },
-    {
       "id": "alt-1791477895325-42ovd",
       "ruleId": "rule-02",
       "ruleName": "Perimeter Unauthorized Person Detection",
@@ -2980,18 +2560,6 @@
       "createdAt": "2026-10-08T16:44:55.325Z"
     },
     {
-      "id": "alt-1791477751973-ik3wb",
-      "ruleId": "rule-01",
-      "ruleName": "Red Bag / Unattended Package Alert",
-      "eventId": "ev-1791477751967-fpi37",
-      "cameraId": "cam-01",
-      "cameraName": "Main Gate (Cam 01)",
-      "severity": "critical",
-      "message": "Security Rule Triggered: \"Red Bag / Unattended Package Alert\" - Red Bag / Monitored Backpack detected at 22:12:31",
-      "status": "active",
-      "createdAt": "2026-10-08T16:42:31.973Z"
-    },
-    {
       "id": "alt-1791477751960-wy3na",
       "ruleId": "rule-02",
       "ruleName": "Perimeter Unauthorized Person Detection",
@@ -3002,18 +2570,6 @@
       "message": "Security Rule Triggered: \"Perimeter Unauthorized Person Detection\" - Security Patrol Personnel detected at 22:12:31",
       "status": "active",
       "createdAt": "2026-10-08T16:42:31.960Z"
-    },
-    {
-      "id": "alt-1791477748755-n76v5",
-      "ruleId": "rule-01",
-      "ruleName": "Red Bag / Unattended Package Alert",
-      "eventId": "ev-1791477748742-ab27e",
-      "cameraId": "cam-01",
-      "cameraName": "Main Gate (Cam 01)",
-      "severity": "critical",
-      "message": "Security Rule Triggered: \"Red Bag / Unattended Package Alert\" - Red Bag / Monitored Backpack detected at 22:12:28",
-      "status": "active",
-      "createdAt": "2026-10-08T16:42:28.755Z"
     },
     {
       "id": "alt-1791477748735-3yijp",
@@ -3031,11 +2587,11 @@
   "rules": [
     {
       "id": "rule-01",
-      "name": "Red Bag / Unattended Package Alert",
-      "targetObject": "red bag",
+      "name": "Perimeter Security & Ingress Monitor",
+      "targetObject": "perimeter breach",
       "cameraId": "all",
-      "severity": "critical",
-      "action": "create_alert",
+      "severity": "warning",
+      "action": "log_event",
       "enabled": true,
       "triggerCount": 37,
       "createdAt": "2026-10-08T11:48:32.885Z"
@@ -3085,15 +2641,6 @@
   ],
   "notifications": [
     {
-      "id": "notif-1791485925896",
-      "category": "rule_triggered",
-      "title": "Alert: Red Bag / Unattended Package Alert",
-      "message": "Red Bag / Monitored Backpack observed at Sturgis Motorcycle Rally Cam (00:28:45)",
-      "read": false,
-      "link": "/events",
-      "createdAt": "2026-10-08T18:58:45.896Z"
-    },
-    {
       "id": "notif-1791485925855",
       "category": "rule_triggered",
       "title": "Alert: Perimeter Unauthorized Person Detection",
@@ -3101,15 +2648,6 @@
       "read": false,
       "link": "/events",
       "createdAt": "2026-10-08T18:58:45.855Z"
-    },
-    {
-      "id": "notif-1791484503050",
-      "category": "rule_triggered",
-      "title": "Alert: Red Bag / Unattended Package Alert",
-      "message": "Red Bag / Monitored Backpack observed at Sturgis Motorcycle Rally Cam (00:05:02)",
-      "read": false,
-      "link": "/events",
-      "createdAt": "2026-10-08T18:35:03.050Z"
     },
     {
       "id": "notif-1791484503015",
@@ -3121,15 +2659,6 @@
       "createdAt": "2026-10-08T18:35:03.015Z"
     },
     {
-      "id": "notif-1791484497859",
-      "category": "rule_triggered",
-      "title": "Alert: Red Bag / Unattended Package Alert",
-      "message": "Red Bag / Monitored Backpack observed at Sturgis Motorcycle Rally Cam (00:04:57)",
-      "read": false,
-      "link": "/events",
-      "createdAt": "2026-10-08T18:34:57.859Z"
-    },
-    {
       "id": "notif-1791484497830",
       "category": "rule_triggered",
       "title": "Alert: Perimeter Unauthorized Person Detection",
@@ -3137,15 +2666,6 @@
       "read": false,
       "link": "/events",
       "createdAt": "2026-10-08T18:34:57.830Z"
-    },
-    {
-      "id": "notif-1791484487397",
-      "category": "rule_triggered",
-      "title": "Alert: Red Bag / Unattended Package Alert",
-      "message": "Red Bag / Monitored Backpack observed at Sturgis Motorcycle Rally Cam (00:04:47)",
-      "read": false,
-      "link": "/events",
-      "createdAt": "2026-10-08T18:34:47.397Z"
     },
     {
       "id": "notif-1791484487359",
@@ -3157,15 +2677,6 @@
       "createdAt": "2026-10-08T18:34:47.359Z"
     },
     {
-      "id": "notif-1791484484088",
-      "category": "rule_triggered",
-      "title": "Alert: Red Bag / Unattended Package Alert",
-      "message": "Red Bag / Monitored Backpack observed at Sturgis Motorcycle Rally Cam (00:04:44)",
-      "read": false,
-      "link": "/events",
-      "createdAt": "2026-10-08T18:34:44.088Z"
-    },
-    {
       "id": "notif-1791484484052",
       "category": "rule_triggered",
       "title": "Alert: Perimeter Unauthorized Person Detection",
@@ -3173,15 +2684,6 @@
       "read": false,
       "link": "/events",
       "createdAt": "2026-10-08T18:34:44.052Z"
-    },
-    {
-      "id": "notif-1791484480743",
-      "category": "rule_triggered",
-      "title": "Alert: Red Bag / Unattended Package Alert",
-      "message": "Red Bag / Monitored Backpack observed at Sturgis Motorcycle Rally Cam (00:04:40)",
-      "read": false,
-      "link": "/events",
-      "createdAt": "2026-10-08T18:34:40.743Z"
     },
     {
       "id": "notif-1791484480706",
@@ -3193,15 +2695,6 @@
       "createdAt": "2026-10-08T18:34:40.706Z"
     },
     {
-      "id": "notif-1791484477377",
-      "category": "rule_triggered",
-      "title": "Alert: Red Bag / Unattended Package Alert",
-      "message": "Red Bag / Monitored Backpack observed at Sturgis Motorcycle Rally Cam (00:04:37)",
-      "read": false,
-      "link": "/events",
-      "createdAt": "2026-10-08T18:34:37.377Z"
-    },
-    {
       "id": "notif-1791484477345",
       "category": "rule_triggered",
       "title": "Alert: Perimeter Unauthorized Person Detection",
@@ -3209,15 +2702,6 @@
       "read": false,
       "link": "/events",
       "createdAt": "2026-10-08T18:34:37.345Z"
-    },
-    {
-      "id": "notif-1791483769676",
-      "category": "rule_triggered",
-      "title": "Alert: Red Bag / Unattended Package Alert",
-      "message": "Red Bag / Monitored Backpack observed at Sturgis Motorcycle Rally Cam (23:52:49)",
-      "read": false,
-      "link": "/events",
-      "createdAt": "2026-10-08T18:22:49.676Z"
     },
     {
       "id": "notif-1791483769629",
@@ -3229,15 +2713,6 @@
       "createdAt": "2026-10-08T18:22:49.629Z"
     },
     {
-      "id": "notif-1791483760197",
-      "category": "rule_triggered",
-      "title": "Alert: Red Bag / Unattended Package Alert",
-      "message": "Red Bag / Monitored Backpack observed at Sturgis Motorcycle Rally Cam (23:52:40)",
-      "read": false,
-      "link": "/events",
-      "createdAt": "2026-10-08T18:22:40.197Z"
-    },
-    {
       "id": "notif-1791483760169",
       "category": "rule_triggered",
       "title": "Alert: Perimeter Unauthorized Person Detection",
@@ -3245,15 +2720,6 @@
       "read": false,
       "link": "/events",
       "createdAt": "2026-10-08T18:22:40.169Z"
-    },
-    {
-      "id": "notif-1791483756824",
-      "category": "rule_triggered",
-      "title": "Alert: Red Bag / Unattended Package Alert",
-      "message": "Red Bag / Monitored Backpack observed at Sturgis Motorcycle Rally Cam (23:52:36)",
-      "read": false,
-      "link": "/events",
-      "createdAt": "2026-10-08T18:22:36.824Z"
     },
     {
       "id": "notif-1791483756789",
@@ -3265,15 +2731,6 @@
       "createdAt": "2026-10-08T18:22:36.789Z"
     },
     {
-      "id": "notif-1791479586876",
-      "category": "rule_triggered",
-      "title": "Alert: Red Bag / Unattended Package Alert",
-      "message": "Red Bag / Monitored Backpack observed at Main Gate (Cam 01) (22:43:06)",
-      "read": false,
-      "link": "/events",
-      "createdAt": "2026-10-08T17:13:06.877Z"
-    },
-    {
       "id": "notif-1791479586863",
       "category": "rule_triggered",
       "title": "Alert: Perimeter Unauthorized Person Detection",
@@ -3281,15 +2738,6 @@
       "read": false,
       "link": "/events",
       "createdAt": "2026-10-08T17:13:06.863Z"
-    },
-    {
-      "id": "notif-1791479583695",
-      "category": "rule_triggered",
-      "title": "Alert: Red Bag / Unattended Package Alert",
-      "message": "Red Bag / Monitored Backpack observed at Main Gate (Cam 01) (22:43:03)",
-      "read": false,
-      "link": "/events",
-      "createdAt": "2026-10-08T17:13:03.695Z"
     },
     {
       "id": "notif-1791479583684",
@@ -3301,15 +2749,6 @@
       "createdAt": "2026-10-08T17:13:03.684Z"
     },
     {
-      "id": "notif-1791479580474",
-      "category": "rule_triggered",
-      "title": "Alert: Red Bag / Unattended Package Alert",
-      "message": "Red Bag / Monitored Backpack observed at Main Gate (Cam 01) (22:43:00)",
-      "read": false,
-      "link": "/events",
-      "createdAt": "2026-10-08T17:13:00.474Z"
-    },
-    {
       "id": "notif-1791479580461",
       "category": "rule_triggered",
       "title": "Alert: Perimeter Unauthorized Person Detection",
@@ -3317,15 +2756,6 @@
       "read": false,
       "link": "/events",
       "createdAt": "2026-10-08T17:13:00.461Z"
-    },
-    {
-      "id": "notif-1791479577286",
-      "category": "rule_triggered",
-      "title": "Alert: Red Bag / Unattended Package Alert",
-      "message": "Red Bag / Monitored Backpack observed at Main Gate (Cam 01) (22:42:57)",
-      "read": false,
-      "link": "/events",
-      "createdAt": "2026-10-08T17:12:57.286Z"
     },
     {
       "id": "notif-1791479577272",
@@ -3337,15 +2767,6 @@
       "createdAt": "2026-10-08T17:12:57.272Z"
     },
     {
-      "id": "notif-1791479573164",
-      "category": "rule_triggered",
-      "title": "Alert: Red Bag / Unattended Package Alert",
-      "message": "Red Bag / Monitored Backpack observed at Main Gate (Cam 01) (22:42:53)",
-      "read": false,
-      "link": "/events",
-      "createdAt": "2026-10-08T17:12:53.164Z"
-    },
-    {
       "id": "notif-1791479573150",
       "category": "rule_triggered",
       "title": "Alert: Perimeter Unauthorized Person Detection",
@@ -3353,15 +2774,6 @@
       "read": false,
       "link": "/events",
       "createdAt": "2026-10-08T17:12:53.150Z"
-    },
-    {
-      "id": "notif-1791479569461",
-      "category": "rule_triggered",
-      "title": "Alert: Red Bag / Unattended Package Alert",
-      "message": "Red Bag / Monitored Backpack observed at Main Gate (Cam 01) (22:42:49)",
-      "read": false,
-      "link": "/events",
-      "createdAt": "2026-10-08T17:12:49.461Z"
     },
     {
       "id": "notif-1791479569449",
@@ -3373,15 +2785,6 @@
       "createdAt": "2026-10-08T17:12:49.449Z"
     },
     {
-      "id": "notif-1791479566294",
-      "category": "rule_triggered",
-      "title": "Alert: Red Bag / Unattended Package Alert",
-      "message": "Red Bag / Monitored Backpack observed at Main Gate (Cam 01) (22:42:46)",
-      "read": false,
-      "link": "/events",
-      "createdAt": "2026-10-08T17:12:46.294Z"
-    },
-    {
       "id": "notif-1791479566280",
       "category": "rule_triggered",
       "title": "Alert: Perimeter Unauthorized Person Detection",
@@ -3389,15 +2792,6 @@
       "read": false,
       "link": "/events",
       "createdAt": "2026-10-08T17:12:46.280Z"
-    },
-    {
-      "id": "notif-1791479562165",
-      "category": "rule_triggered",
-      "title": "Alert: Red Bag / Unattended Package Alert",
-      "message": "Red Bag / Monitored Backpack observed at Main Gate (Cam 01) (22:42:42)",
-      "read": false,
-      "link": "/events",
-      "createdAt": "2026-10-08T17:12:42.165Z"
     },
     {
       "id": "notif-1791479562154",
@@ -3409,15 +2803,6 @@
       "createdAt": "2026-10-08T17:12:42.154Z"
     },
     {
-      "id": "notif-1791479558961",
-      "category": "rule_triggered",
-      "title": "Alert: Red Bag / Unattended Package Alert",
-      "message": "Red Bag / Monitored Backpack observed at Main Gate (Cam 01) (22:42:38)",
-      "read": false,
-      "link": "/events",
-      "createdAt": "2026-10-08T17:12:38.961Z"
-    },
-    {
       "id": "notif-1791479558948",
       "category": "rule_triggered",
       "title": "Alert: Perimeter Unauthorized Person Detection",
@@ -3425,15 +2810,6 @@
       "read": false,
       "link": "/events",
       "createdAt": "2026-10-08T17:12:38.948Z"
-    },
-    {
-      "id": "notif-1791479555814",
-      "category": "rule_triggered",
-      "title": "Alert: Red Bag / Unattended Package Alert",
-      "message": "Red Bag / Monitored Backpack observed at Main Gate (Cam 01) (22:42:35)",
-      "read": false,
-      "link": "/events",
-      "createdAt": "2026-10-08T17:12:35.814Z"
     },
     {
       "id": "notif-1791479555801",
@@ -3445,15 +2821,6 @@
       "createdAt": "2026-10-08T17:12:35.801Z"
     },
     {
-      "id": "notif-1791479552663",
-      "category": "rule_triggered",
-      "title": "Alert: Red Bag / Unattended Package Alert",
-      "message": "Red Bag / Monitored Backpack observed at Main Gate (Cam 01) (22:42:32)",
-      "read": false,
-      "link": "/events",
-      "createdAt": "2026-10-08T17:12:32.663Z"
-    },
-    {
       "id": "notif-1791479552653",
       "category": "rule_triggered",
       "title": "Alert: Perimeter Unauthorized Person Detection",
@@ -3461,15 +2828,6 @@
       "read": false,
       "link": "/events",
       "createdAt": "2026-10-08T17:12:32.653Z"
-    },
-    {
-      "id": "notif-1791479542631",
-      "category": "rule_triggered",
-      "title": "Alert: Red Bag / Unattended Package Alert",
-      "message": "Red Bag / Monitored Backpack observed at Main Gate (Cam 01) (22:42:22)",
-      "read": false,
-      "link": "/events",
-      "createdAt": "2026-10-08T17:12:22.631Z"
     },
     {
       "id": "notif-1791479542616",
@@ -3481,15 +2839,6 @@
       "createdAt": "2026-10-08T17:12:22.616Z"
     },
     {
-      "id": "notif-1791479539449",
-      "category": "rule_triggered",
-      "title": "Alert: Red Bag / Unattended Package Alert",
-      "message": "Red Bag / Monitored Backpack observed at Main Gate (Cam 01) (22:42:19)",
-      "read": false,
-      "link": "/events",
-      "createdAt": "2026-10-08T17:12:19.449Z"
-    },
-    {
       "id": "notif-1791479539435",
       "category": "rule_triggered",
       "title": "Alert: Perimeter Unauthorized Person Detection",
@@ -3497,15 +2846,6 @@
       "read": false,
       "link": "/events",
       "createdAt": "2026-10-08T17:12:19.435Z"
-    },
-    {
-      "id": "notif-1791479503376",
-      "category": "rule_triggered",
-      "title": "Alert: Red Bag / Unattended Package Alert",
-      "message": "Red Bag / Monitored Backpack observed at Main Gate (Cam 01) (22:41:43)",
-      "read": false,
-      "link": "/events",
-      "createdAt": "2026-10-08T17:11:43.376Z"
     },
     {
       "id": "notif-1791479503365",
@@ -3517,15 +2857,6 @@
       "createdAt": "2026-10-08T17:11:43.365Z"
     },
     {
-      "id": "notif-1791479500173",
-      "category": "rule_triggered",
-      "title": "Alert: Red Bag / Unattended Package Alert",
-      "message": "Red Bag / Monitored Backpack observed at Main Gate (Cam 01) (22:41:40)",
-      "read": false,
-      "link": "/events",
-      "createdAt": "2026-10-08T17:11:40.173Z"
-    },
-    {
       "id": "notif-1791479500161",
       "category": "rule_triggered",
       "title": "Alert: Perimeter Unauthorized Person Detection",
@@ -3533,15 +2864,6 @@
       "read": false,
       "link": "/events",
       "createdAt": "2026-10-08T17:11:40.161Z"
-    },
-    {
-      "id": "notif-1791479496978",
-      "category": "rule_triggered",
-      "title": "Alert: Red Bag / Unattended Package Alert",
-      "message": "Red Bag / Monitored Backpack observed at Main Gate (Cam 01) (22:41:36)",
-      "read": false,
-      "link": "/events",
-      "createdAt": "2026-10-08T17:11:36.978Z"
     },
     {
       "id": "notif-1791479496952",
@@ -3553,15 +2875,6 @@
       "createdAt": "2026-10-08T17:11:36.952Z"
     },
     {
-      "id": "notif-1791479493745",
-      "category": "rule_triggered",
-      "title": "Alert: Red Bag / Unattended Package Alert",
-      "message": "Red Bag / Monitored Backpack observed at Main Gate (Cam 01) (22:41:33)",
-      "read": false,
-      "link": "/events",
-      "createdAt": "2026-10-08T17:11:33.745Z"
-    },
-    {
       "id": "notif-1791479493733",
       "category": "rule_triggered",
       "title": "Alert: Perimeter Unauthorized Person Detection",
@@ -3569,15 +2882,6 @@
       "read": false,
       "link": "/events",
       "createdAt": "2026-10-08T17:11:33.733Z"
-    },
-    {
-      "id": "notif-1791479490521",
-      "category": "rule_triggered",
-      "title": "Alert: Red Bag / Unattended Package Alert",
-      "message": "Red Bag / Monitored Backpack observed at Main Gate (Cam 01) (22:41:30)",
-      "read": false,
-      "link": "/events",
-      "createdAt": "2026-10-08T17:11:30.521Z"
     },
     {
       "id": "notif-1791479490505",
@@ -3589,15 +2893,6 @@
       "createdAt": "2026-10-08T17:11:30.505Z"
     },
     {
-      "id": "notif-1791479487327",
-      "category": "rule_triggered",
-      "title": "Alert: Red Bag / Unattended Package Alert",
-      "message": "Red Bag / Monitored Backpack observed at Main Gate (Cam 01) (22:41:27)",
-      "read": false,
-      "link": "/events",
-      "createdAt": "2026-10-08T17:11:27.327Z"
-    },
-    {
       "id": "notif-1791479487302",
       "category": "rule_triggered",
       "title": "Alert: Perimeter Unauthorized Person Detection",
@@ -3605,15 +2900,6 @@
       "read": false,
       "link": "/events",
       "createdAt": "2026-10-08T17:11:27.302Z"
-    },
-    {
-      "id": "notif-1791479484125",
-      "category": "rule_triggered",
-      "title": "Alert: Red Bag / Unattended Package Alert",
-      "message": "Red Bag / Monitored Backpack observed at Main Gate (Cam 01) (22:41:24)",
-      "read": false,
-      "link": "/events",
-      "createdAt": "2026-10-08T17:11:24.125Z"
     },
     {
       "id": "notif-1791479484113",
@@ -3625,15 +2911,6 @@
       "createdAt": "2026-10-08T17:11:24.113Z"
     },
     {
-      "id": "notif-1791479480932",
-      "category": "rule_triggered",
-      "title": "Alert: Red Bag / Unattended Package Alert",
-      "message": "Red Bag / Monitored Backpack observed at Main Gate (Cam 01) (22:41:20)",
-      "read": false,
-      "link": "/events",
-      "createdAt": "2026-10-08T17:11:20.932Z"
-    },
-    {
       "id": "notif-1791479480920",
       "category": "rule_triggered",
       "title": "Alert: Perimeter Unauthorized Person Detection",
@@ -3641,15 +2918,6 @@
       "read": false,
       "link": "/events",
       "createdAt": "2026-10-08T17:11:20.920Z"
-    },
-    {
-      "id": "notif-1791479477715",
-      "category": "rule_triggered",
-      "title": "Alert: Red Bag / Unattended Package Alert",
-      "message": "Red Bag / Monitored Backpack observed at Main Gate (Cam 01) (22:41:17)",
-      "read": false,
-      "link": "/events",
-      "createdAt": "2026-10-08T17:11:17.715Z"
     },
     {
       "id": "notif-1791479477704",
@@ -3661,15 +2929,6 @@
       "createdAt": "2026-10-08T17:11:17.704Z"
     },
     {
-      "id": "notif-1791479474501",
-      "category": "rule_triggered",
-      "title": "Alert: Red Bag / Unattended Package Alert",
-      "message": "Red Bag / Monitored Backpack observed at Main Gate (Cam 01) (22:41:14)",
-      "read": false,
-      "link": "/events",
-      "createdAt": "2026-10-08T17:11:14.501Z"
-    },
-    {
       "id": "notif-1791479474488",
       "category": "rule_triggered",
       "title": "Alert: Perimeter Unauthorized Person Detection",
@@ -3679,15 +2938,6 @@
       "createdAt": "2026-10-08T17:11:14.488Z"
     },
     {
-      "id": "notif-1791479460496",
-      "category": "rule_triggered",
-      "title": "Alert: Red Bag / Unattended Package Alert",
-      "message": "Red Bag / Monitored Backpack observed at Main Gate (Cam 01) (22:41:00)",
-      "read": false,
-      "link": "/events",
-      "createdAt": "2026-10-08T17:11:00.496Z"
-    },
-    {
       "id": "notif-1791479460486",
       "category": "rule_triggered",
       "title": "Alert: Perimeter Unauthorized Person Detection",
@@ -3695,15 +2945,6 @@
       "read": false,
       "link": "/events",
       "createdAt": "2026-10-08T17:11:00.486Z"
-    },
-    {
-      "id": "notif-1791477895348",
-      "category": "rule_triggered",
-      "title": "Alert: Red Bag / Unattended Package Alert",
-      "message": "Red Bag / Monitored Backpack observed at Main Gate (Cam 01) (22:14:55)",
-      "read": false,
-      "link": "/events",
-      "createdAt": "2026-10-08T16:44:55.348Z"
     },
     {
       "id": "notif-1791477895331",
@@ -3733,15 +2974,6 @@
       "createdAt": "2026-10-08T16:44:05.023Z"
     },
     {
-      "id": "notif-1791477751979",
-      "category": "rule_triggered",
-      "title": "Alert: Red Bag / Unattended Package Alert",
-      "message": "Red Bag / Monitored Backpack observed at Main Gate (Cam 01) (22:12:31)",
-      "read": false,
-      "link": "/events",
-      "createdAt": "2026-10-08T16:42:31.979Z"
-    },
-    {
       "id": "notif-1791477751963",
       "category": "rule_triggered",
       "title": "Alert: Perimeter Unauthorized Person Detection",
@@ -3749,15 +2981,6 @@
       "read": false,
       "link": "/events",
       "createdAt": "2026-10-08T16:42:31.963Z"
-    },
-    {
-      "id": "notif-1791477748761",
-      "category": "rule_triggered",
-      "title": "Alert: Red Bag / Unattended Package Alert",
-      "message": "Red Bag / Monitored Backpack observed at Main Gate (Cam 01) (22:12:28)",
-      "read": false,
-      "link": "/events",
-      "createdAt": "2026-10-08T16:42:28.761Z"
     },
     {
       "id": "notif-1791477748738",

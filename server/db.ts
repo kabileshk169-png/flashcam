@@ -853,11 +853,11 @@ const INITIAL_CAMERAS: Camera[] = [
 const INITIAL_RULES: MonitoringRule[] = [
   {
     id: 'rule-01',
-    name: 'Red Bag / Unattended Package Alert',
-    targetObject: 'red bag',
+    name: 'Perimeter Security & Ingress Monitor',
+    targetObject: 'perimeter breach',
     cameraId: 'all',
-    severity: 'critical',
-    action: 'create_alert',
+    severity: 'warning',
+    action: 'log_event',
     enabled: true,
     triggerCount: 0,
     createdAt: new Date().toISOString(),

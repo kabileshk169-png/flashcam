@@ -158,11 +158,11 @@ export function synthesizeEdgeFrameDetections(
       });
     } else if (idx === 2) {
       frameDets.push({
-        label: 'Red Bag / Unattended Package',
-        category: 'bag',
-        confidence: 98,
-        severity: 'critical',
-        description: 'Red metallic bag placed near checkpoint barrier without an immediate custodian.',
+        label: 'Monitored Handheld Luggage',
+        category: 'object',
+        confidence: 94,
+        severity: 'info',
+        description: 'Passenger carry-on item verified along security corridor.',
         boundingBox: { x: 48, y: 62, width: 14, height: 16 },
       });
     } else if (idx === 3) {
@@ -391,11 +391,11 @@ export function synthesizeEdgeLiveDetection(
       boundingBox: { x: 38, y: 44, width: 14, height: 38 },
     });
     items.push({
-      label: 'Red Bag / Monitored Backpack',
-      category: 'bag',
-      confidence: 98,
-      severity: 'critical',
-      description: 'Red backpack identified at checkpoint barrier; monitored in active zone.',
+      label: 'Main Gate Access Threshold',
+      category: 'general',
+      confidence: 96,
+      severity: 'info',
+      description: 'Perimeter ingress threshold clear and operating normally.',
       boundingBox: { x: 50, y: 58, width: 10, height: 12 },
     });
   } else if (camLower.includes('dock') || camLower.includes('cam-02')) {
