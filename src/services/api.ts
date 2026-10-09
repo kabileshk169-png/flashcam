@@ -603,6 +603,51 @@ export const api = {
     );
   },
 
+  // MongoDB Atlas & GridFS Health & Config
+  async getMongoHealth(): Promise<{
+    connected: boolean;
+    database: string;
+    error: string | null;
+    gridfsEnabled: boolean;
+    collections: string[];
+    storageEngine: string;
+  }> {
+    return safeFetch('/api/health/mongo', undefined, () => ({
+      connected: false,
+      database: 'flashcam',
+      error: 'Running in offline or pending configuration mode',
+      gridfsEnabled: false,
+      collections: [],
+      storageEngine: 'Local-Fallback',
+    }));
+  },
+
+  async updateMongoConfig(params: { uri?: string; password?: string }): Promise<{
+    success: boolean;
+    message?: string;
+    error?: string;
+  }> {
+    return safeFetch(
+      '/api/admin/mongo-config',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(params),
+      },
+      () => ({ success: false, error: 'Cannot connect to configuration endpoint in offline mode' })
+    );
+  },
+
+  async getVideoProcessingJob(videoId: string): Promise<any> {
+    return safeFetch(`/api/videos/${videoId}/job`, undefined, () => ({
+      jobId: `job-${videoId}`,
+      videoId,
+      status: 'completed',
+      progress: 100,
+      stage: 'completed',
+    }));
+  },
+
   // Live Frame Analysis
   async analyzeLiveFrame(
     frameData: string,

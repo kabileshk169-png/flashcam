@@ -4,6 +4,8 @@ import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
 import { apiRouter } from './server/routes.js';
+import { mongoManager } from './server/mongodb.js';
+import { gridfsRouter } from './server/gridfs.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -24,6 +26,14 @@ async function startServer() {
 
   app.use(express.json({ limit: '50mb' }));
   app.use(express.urlencoded({ extended: true, limit: '50mb' }));
+
+  // Initialize MongoDB Atlas connection asynchronously
+  mongoManager.connect().catch((err) => {
+    console.warn('[FLASH CAM] MongoDB Atlas initialization notice:', err?.message);
+  });
+
+  // Mount GridFS and streaming routes
+  app.use('/api/gridfs', gridfsRouter);
 
   // Static uploads directory for recorded and uploaded videos & frames
   const uploadsDir = path.resolve(__dirname, 'uploads');

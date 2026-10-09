@@ -27,10 +27,52 @@ export const SettingsPage: React.FC = () => {
   const [newMemoryValue, setNewMemoryValue] = useState('');
   const [newMemoryContext, setNewMemoryContext] = useState('');
 
+  // MongoDB Atlas State
+  const [mongoHealth, setMongoHealth] = useState<{
+    connected: boolean;
+    database: string;
+    error: string | null;
+    gridfsEnabled: boolean;
+    collections: string[];
+    storageEngine: string;
+  } | null>(null);
+  const [dbPassword, setDbPassword] = useState('');
+  const [connectingMongo, setConnectingMongo] = useState(false);
+
   useEffect(() => {
     setFormData({ ...settings });
     fetchMemory();
+    fetchMongoHealth();
   }, [settings]);
+
+  const fetchMongoHealth = async () => {
+    try {
+      const h = await api.getMongoHealth();
+      setMongoHealth(h);
+    } catch (e) {
+      console.warn(e);
+    }
+  };
+
+  const handleConnectMongo = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!dbPassword.trim()) return;
+    setConnectingMongo(true);
+    try {
+      const res = await api.updateMongoConfig({ password: dbPassword.trim() });
+      if (res.success) {
+        showToast('Successfully connected to MongoDB Atlas and GridFS!', 'success');
+        setDbPassword('');
+        await fetchMongoHealth();
+      } else {
+        showToast(res.error || 'Connection failed', 'error');
+      }
+    } catch (err: any) {
+      showToast(err?.message || 'Connection failed', 'error');
+    } finally {
+      setConnectingMongo(false);
+    }
+  };
 
   const fetchMemory = async () => {
     try {
@@ -305,6 +347,106 @@ export const SettingsPage: React.FC = () => {
           >
             Save Memory
           </button>
+        </form>
+      </div>
+
+      {/* MongoDB Atlas & GridFS Infrastructure Card */}
+      <div className="p-5 rounded-2xl bg-slate-900 border border-slate-800 space-y-4">
+        <div className="flex items-center justify-between pb-2 border-b border-slate-800">
+          <div className="flex items-center gap-2 text-sm font-bold text-white font-mono">
+            <Database className="w-4 h-4 text-emerald-400" />
+            <span>MONGODB ATLAS & GRIDFS ENGINE</span>
+          </div>
+          {mongoHealth?.connected ? (
+            <span className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              ONLINE & ACTIVE (GRIDFS)
+            </span>
+          ) : (
+            <span className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-500/20 text-amber-400 border border-amber-500/30">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+              AWAITING PASSWORD AUTH
+            </span>
+          )}
+        </div>
+
+        <p className="text-xs text-slate-400 leading-relaxed">
+          MongoDB Atlas is configured as the unified operational database and binary video store via <strong>MongoDB GridFS</strong>. Videos, processing jobs, tracking trajectories, and detections persist across all 10 schema collections.
+        </p>
+
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+          <div className="p-3 rounded-xl bg-slate-950 border border-slate-800">
+            <span className="text-[10px] font-mono text-slate-500 block">DATABASE</span>
+            <span className="font-bold text-white font-mono">{mongoHealth?.database || 'flashcam'}</span>
+          </div>
+          <div className="p-3 rounded-xl bg-slate-950 border border-slate-800">
+            <span className="text-[10px] font-mono text-slate-500 block">VIDEO STORAGE</span>
+            <span className="font-bold text-emerald-400 font-mono">MongoDB GridFS</span>
+          </div>
+          <div className="p-3 rounded-xl bg-slate-950 border border-slate-800">
+            <span className="text-[10px] font-mono text-slate-500 block">STREAMING PROTOCOL</span>
+            <span className="font-bold text-blue-400 font-mono">HTTP 206 Range</span>
+          </div>
+          <div className="p-3 rounded-xl bg-slate-950 border border-slate-800">
+            <span className="text-[10px] font-mono text-slate-500 block">INDEXED COLLECTIONS</span>
+            <span className="font-bold text-indigo-400 font-mono">10 Collections</span>
+          </div>
+        </div>
+
+        {/* Collections Overview */}
+        <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+          <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block font-bold">
+            Configured MongoDB Collections:
+          </span>
+          <div className="flex flex-wrap gap-1.5">
+            {[
+              'videos',
+              'processing_jobs',
+              'detections',
+              'tracks',
+              'events',
+              'evidence',
+              'conversations',
+              'camera_sources',
+              'alerts',
+              'audit_logs',
+            ].map((col) => (
+              <span
+                key={col}
+                className="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-900 border border-slate-800 text-slate-300"
+              >
+                {col}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Connect Form if not connected or to update password */}
+        <form onSubmit={handleConnectMongo} className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-3">
+          <label className="text-xs font-semibold text-slate-300 block font-mono">
+            {mongoHealth?.connected ? 'Update / Refresh Atlas Password:' : 'Connect to Live MongoDB Atlas Cluster:'}
+          </label>
+          <div className="flex gap-2">
+            <input
+              type="password"
+              value={dbPassword}
+              onChange={(e) => setDbPassword(e.target.value)}
+              placeholder="Enter Atlas database password for user kabileshk169_db_user"
+              className="flex-1 p-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-xs font-mono placeholder:text-slate-600 focus:outline-hidden focus:border-blue-500"
+            />
+            <button
+              type="submit"
+              disabled={connectingMongo || !dbPassword.trim()}
+              className="px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white text-xs font-bold font-mono transition-all cursor-pointer whitespace-nowrap"
+            >
+              {connectingMongo ? 'Authenticating...' : 'Connect to Atlas'}
+            </button>
+          </div>
+          {mongoHealth?.error && (
+            <p className="text-[11px] text-amber-400 font-mono">
+              Status: {mongoHealth.error}
+            </p>
+          )}
         </form>
       </div>
     </div>

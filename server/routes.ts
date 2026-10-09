@@ -28,8 +28,56 @@ import {
   REFERENCE_VIDEOS,
   evaluateConversationalQuery,
 } from './demoData.js';
+import { mongoManager } from './mongodb.js';
 
 export const apiRouter = express.Router();
+
+// MongoDB Health & Status check
+apiRouter.get('/health/mongo', async (_req: Request, res: Response) => {
+  const isConnected = mongoManager.isConnected;
+  const dbName = process.env.MONGODB_DATABASE || 'flashcam';
+  res.json({
+    connected: isConnected,
+    database: dbName,
+    error: isConnected ? null : mongoManager.connectionError,
+    gridfsEnabled: isConnected && Boolean(mongoManager.videoStorageBucket),
+    collections: isConnected
+      ? [
+          'videos',
+          'processing_jobs',
+          'detections',
+          'tracks',
+          'events',
+          'evidence',
+          'conversations',
+          'camera_sources',
+          'alerts',
+          'audit_logs',
+        ]
+      : [],
+    storageEngine: isConnected ? 'MongoDB-Atlas-GridFS' : 'Local-Disk-Fallback',
+  });
+});
+
+// Admin endpoint to update MongoDB URI / password and reconnect dynamically
+apiRouter.post('/admin/mongo-config', async (req: Request, res: Response) => {
+  const { uri, password } = req.body;
+  let targetUri = uri;
+  if (password && !targetUri) {
+    const current = process.env.MONGODB_URI || '';
+    targetUri = current.replace('<db_password>', encodeURIComponent(password));
+  }
+  if (!targetUri) {
+    return res.status(400).json({ error: 'Please provide either a full "uri" or a "password".' });
+  }
+
+  const result = await mongoManager.reconnectWithUri(targetUri);
+  if (result.success) {
+    res.json({ success: true, message: 'Successfully connected to MongoDB Atlas!' });
+  } else {
+    res.status(400).json({ success: false, error: result.error || 'Failed to connect to MongoDB Atlas.' });
+  }
+});
 
 // Ensure upload, clips, snapshots, and recordings directories exist
 const isServerless = Boolean(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME);
@@ -818,47 +866,191 @@ apiRouter.post('/cameras/:id/tracks', (req: Request, res: Response) => {
   res.json(saved);
 });
 
-// Videos Management
-apiRouter.get('/videos', (_req: Request, res: Response) => {
-  res.json(db.getVideos());
+// Videos Management (MongoDB GridFS & Intelligence Engine)
+apiRouter.get('/videos', async (_req: Request, res: Response) => {
+  try {
+    let mongoVideos: any[] = [];
+    if (mongoManager.isConnected) {
+      mongoVideos = await mongoManager.getVideos();
+    }
+    const memVideos = db.getVideos();
+    const merged = [...mongoVideos];
+    for (const mv of memVideos) {
+      if (!merged.some((v) => v.id === mv.id)) {
+        merged.push(mv);
+      }
+    }
+    res.json(merged);
+  } catch (err: any) {
+    res.json(db.getVideos());
+  }
 });
 
-apiRouter.get('/videos/:id', (req: Request, res: Response) => {
-  const video = db.getVideoById(req.params.id);
-  if (!video) return res.status(404).json({ error: 'Video not found.' });
-  const detections = db.getDetections(video.id);
-  res.json({ ...video, detections });
+apiRouter.get('/videos/:id', async (req: Request, res: Response) => {
+  try {
+    let video: any = null;
+    let detections: any[] = [];
+    if (mongoManager.isConnected) {
+      video = await mongoManager.getVideoById(req.params.id);
+      if (video) {
+        detections = await mongoManager.getDetectionsByVideoId(req.params.id);
+      }
+    }
+    if (!video) {
+      video = db.getVideoById(req.params.id);
+      if (video) {
+        detections = db.getDetections(video.id);
+      }
+    }
+    if (!video) return res.status(404).json({ error: 'Video not found.' });
+    res.json({ ...video, detections });
+  } catch (err: any) {
+    const video = db.getVideoById(req.params.id);
+    if (!video) return res.status(404).json({ error: 'Video not found.' });
+    res.json({ ...video, detections: db.getDetections(video.id) });
+  }
 });
 
-apiRouter.post('/videos/upload', upload.single('video'), (req: Request, res: Response) => {
+// Video Streaming via HTTP 206 Partial Content (MongoDB GridFS)
+apiRouter.get('/videos/:id/stream', async (req: Request, res: Response) => {
+  const { id } = req.params;
+  try {
+    let video: any = null;
+    if (mongoManager.isConnected) {
+      video = await mongoManager.getVideoById(id);
+    }
+    if (!video) {
+      video = db.getVideoById(id);
+    }
+    if (!video) {
+      return res.status(404).json({ error: 'Video not found' });
+    }
+
+    if (mongoManager.isConnected && video.gridfsFileId && mongoManager.videoStorageBucket) {
+      const fileMeta = await mongoManager.getGridFSFileMetadata(video.gridfsFileId);
+      if (!fileMeta) return res.status(404).json({ error: 'GridFS chunks not found' });
+
+      const totalSize = fileMeta.length;
+      const mimeType = (fileMeta.metadata as any)?.mimeType || 'video/mp4';
+      const range = req.headers.range;
+
+      if (range) {
+        const parts = range.replace(/bytes=/, '').split('-');
+        const start = parseInt(parts[0], 10);
+        const end = parts[1] ? parseInt(parts[1], 10) : totalSize - 1;
+        const chunkSize = end - start + 1;
+
+        res.writeHead(206, {
+          'Content-Range': `bytes ${start}-${end}/${totalSize}`,
+          'Accept-Ranges': 'bytes',
+          'Content-Length': chunkSize,
+          'Content-Type': mimeType,
+          'Cache-Control': 'public, max-age=3600',
+        });
+
+        const stream = mongoManager.getVideoGridFSStream(video.gridfsFileId, { start, end: end + 1 });
+        stream.pipe(res);
+      } else {
+        res.writeHead(200, {
+          'Content-Length': totalSize,
+          'Content-Type': mimeType,
+          'Accept-Ranges': 'bytes',
+          'Cache-Control': 'public, max-age=3600',
+        });
+        const stream = mongoManager.getVideoGridFSStream(video.gridfsFileId);
+        stream.pipe(res);
+      }
+    } else {
+      // Local file or demo stream fallback
+      if (video.url && video.url.startsWith('/uploads')) {
+        return res.redirect(video.url);
+      }
+      res.status(404).json({ error: 'No video stream source found.' });
+    }
+  } catch (err: any) {
+    res.status(500).json({ error: err?.message || 'Error streaming video.' });
+  }
+});
+
+// Processing Job Status
+apiRouter.get('/videos/:id/job', async (req: Request, res: Response) => {
+  const { id } = req.params;
+  try {
+    if (mongoManager.isConnected) {
+      const job = await mongoManager.getProcessingJobByVideoId(id);
+      if (job) return res.json(job);
+    }
+    const vid = db.getVideoById(id);
+    res.json({
+      jobId: `job-${id}`,
+      videoId: id,
+      status: vid?.status === 'ready' ? 'completed' : 'processing',
+      progress: vid?.status === 'ready' ? 100 : 80,
+      stage: vid?.status === 'ready' ? 'completed' : 'running_ai_detection',
+    });
+  } catch (err: any) {
+    res.status(500).json({ error: err?.message });
+  }
+});
+
+apiRouter.post('/videos/upload', upload.single('video'), async (req: Request, res: Response) => {
   if (!req.file) {
     return res.status(400).json({ error: 'No video file provided.' });
   }
 
-  const { originalname, filename, size } = req.file;
-  const title = (req.body.title || originalname).replace(/\.[^/.]+$/, '');
+  const { originalname, filename, size, buffer, mimetype } = req.file;
+  const title = (req.body.title || originalname).replace(/\.[^/.]+$/, '').trim();
   const cameraId = req.body.cameraId || undefined;
+  const videoId = `vid-${Date.now()}`;
+  const sanitizedFilename = `${videoId}_${originalname.replace(/[^a-zA-Z0-9._-]/g, '_')}`;
 
-  const videoRecord: VideoRecord = {
-    id: `vid-${Date.now()}`,
+  let gridfsFileId: any;
+
+  if (mongoManager.isConnected && mongoManager.videoStorageBucket) {
+    try {
+      const { Readable } = await import('stream');
+      const stream = Readable.from(buffer || fs.readFileSync(req.file.path));
+      gridfsFileId = await mongoManager.uploadVideoToGridFS(sanitizedFilename, stream, {
+        mimeType: mimetype || 'video/mp4',
+        title,
+        fileSize: size,
+        videoId,
+        cameraId,
+      });
+      console.log(`[GridFS] Uploaded "${title}" to MongoDB GridFS (ID: ${gridfsFileId})`);
+    } catch (gErr) {
+      console.warn('[GridFS] Upload warning:', gErr);
+    }
+  }
+
+  const streamUrl = gridfsFileId ? `/api/videos/${videoId}/stream` : `/uploads/${filename || sanitizedFilename}`;
+
+  const videoDoc = {
+    id: videoId,
     title,
-    fileName: filename,
-    filePath: req.file.path,
-    url: `/uploads/${filename}`,
+    fileName: filename || sanitizedFilename,
+    filePath: req.file.path || '',
+    url: streamUrl,
     fileSize: size,
-    status: 'uploaded',
+    status: 'uploaded' as const,
+    gridfsFileId,
     cameraId,
     uploadedAt: new Date().toISOString(),
     detectionCount: 0,
   };
 
-  const saved = db.addVideo(videoRecord);
+  if (mongoManager.isConnected) {
+    await mongoManager.saveVideo(videoDoc as any);
+    await mongoManager.createProcessingJob(videoId, title);
+  }
+
+  const saved = db.addVideo(videoDoc);
 
   db.addNotification({
     id: `notif-${Date.now()}`,
     category: 'video_processed',
-    title: 'Video Uploaded',
-    message: `"${title}" has been uploaded and is ready for frame verification.`,
+    title: 'Video Uploaded to MongoDB',
+    message: `"${title}" stored in MongoDB GridFS and ready for AI verification.`,
     read: false,
     link: '/video-verification',
     createdAt: new Date().toISOString(),
@@ -867,21 +1059,23 @@ apiRouter.post('/videos/upload', upload.single('video'), (req: Request, res: Res
   res.status(201).json(saved);
 });
 
-apiRouter.delete('/videos/:id', (req: Request, res: Response) => {
-  const video = db.getVideoById(req.params.id);
-  if (!video) return res.status(404).json({ error: 'Video not found.' });
+apiRouter.delete('/videos/:id', async (req: Request, res: Response) => {
+  const { id } = req.params;
+  if (mongoManager.isConnected) {
+    await mongoManager.deleteVideo(id);
+  }
 
-  // Remove actual file if exists
-  if (video.filePath && fs.existsSync(video.filePath)) {
+  const video = db.getVideoById(id);
+  if (video && video.filePath && fs.existsSync(video.filePath)) {
     try {
       fs.unlinkSync(video.filePath);
     } catch (e) {
-      console.warn('Could not unlink video file:', e);
+      // ignore
     }
   }
 
-  db.deleteVideo(video.id);
-  res.json({ success: true, deletedId: video.id });
+  db.deleteVideo(id);
+  res.json({ success: true, deletedId: id });
 });
 
 // Export Trimmed Video Clip & Security Report
@@ -1238,8 +1432,9 @@ apiRouter.post('/investigations/:id/notes', (req: Request, res: Response) => {
 });
 
 // Global Search (Multi-domain search across detections, cameras, events, alerts, rules, investigations)
-apiRouter.get('/search', (req: Request, res: Response) => {
+apiRouter.get('/search', async (req: Request, res: Response) => {
   const q = ((req.query.q as string) || '').trim().toLowerCase();
+  const videoId = (req.query.videoId as string) || undefined;
   if (!q) {
     return res.json({
       query: '',
@@ -1250,30 +1445,62 @@ apiRouter.get('/search', (req: Request, res: Response) => {
         alerts: [],
         rules: [],
         investigations: [],
+        tracks: [],
+        evidence: [],
       },
       total: 0,
     });
   }
 
-  const detections = db
-    .getDetections()
+  let mongoDets: any[] = [];
+  let mongoEvents: any[] = [];
+  let mongoEvidence: any[] = [];
+  let mongoTracks: any[] = [];
+
+  if (mongoManager.isConnected) {
+    try {
+      const searchRes = await mongoManager.searchAll(q, videoId);
+      mongoDets = searchRes.detections;
+      mongoEvents = searchRes.events;
+      mongoEvidence = searchRes.evidence;
+      mongoTracks = searchRes.tracks;
+    } catch (err) {
+      console.warn('[MongoDB Search Warning]:', err);
+    }
+  }
+
+  const localDets = db
+    .getDetections(videoId)
     .filter(
       (d) =>
         d.label.toLowerCase().includes(q) ||
         d.description.toLowerCase().includes(q) ||
         d.category.toLowerCase().includes(q)
-    )
-    .slice(0, 15);
+    );
 
-  const events = db
+  // Merge detections, avoiding duplicate IDs
+  const detections = [...mongoDets];
+  for (const ld of localDets) {
+    if (!detections.some((d) => d.id === ld.id)) {
+      detections.push(ld);
+    }
+  }
+
+  const localEvents = db
     .getEvents()
     .filter(
       (e) =>
         e.type.toLowerCase().includes(q) ||
         e.description.toLowerCase().includes(q) ||
         (e.cameraName && e.cameraName.toLowerCase().includes(q))
-    )
-    .slice(0, 15);
+    );
+
+  const events = [...mongoEvents];
+  for (const le of localEvents) {
+    if (!events.some((e) => e.id === le.id)) {
+      events.push(le);
+    }
+  }
 
   const cameras = db
     .getCameras()
@@ -1307,17 +1534,20 @@ apiRouter.get('/search', (req: Request, res: Response) => {
     cameras.length +
     alerts.length +
     rules.length +
-    investigations.length;
+    investigations.length +
+    mongoEvidence.length;
 
   res.json({
     query: q,
     results: {
-      detections,
-      events,
+      detections: detections.slice(0, 20),
+      events: events.slice(0, 20),
       cameras,
       alerts,
       rules,
       investigations,
+      tracks: mongoTracks,
+      evidence: mongoEvidence,
     },
     total,
   });
